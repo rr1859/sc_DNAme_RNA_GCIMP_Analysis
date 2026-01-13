@@ -67,10 +67,7 @@ path_analysis <- function(edited_tree_path, tree_path, features, return_value){
   colnames(mat_num) <- c(features, "gcimp")
   # Compute the phylogenetic node distances between cells in order to measure phylogenetic correlations.
   Winv <- inv_tree_dist(tr, node = TRUE, norm = TRUE)
-  # Josh switched to exp.tree, switch back! alterations:
-  #Winv <- exp.tree.dist(tr, node = TRUE, norm = TRUE)
-  #Winv <- one_node.tree.dist(tr, norm = T)
-  
+ 
   # Compute phylogenetic correlations between GBM modules. 
   modxcor <- xcor(mat_num, Winv)
   
@@ -88,8 +85,9 @@ path_analysis <- function(edited_tree_path, tree_path, features, return_value){
   maxz <- max(abs(df$Z))
   ## switch to non z-score value
   z_score_df <- df %>% dplyr::filter(Var1 == Var2) %>% dplyr::select("Z")
+  #alternative - use Moran's I instead of Z-score
   #z_score_df <- df %>% dplyr::filter(Var1 == Var2) %>% dplyr::select("I")
-  ##
+
   colnames(z_score_df) <- tree_path
   z_score_df[nrow(z_score_df)+1,1] <- avg_gcimp_score
   z_score_df[nrow(z_score_df)+1,1] <- var_gcimp_score
