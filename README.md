@@ -1,9 +1,9 @@
 # Dual capture of RNA and DNA methylation from longitudinal gliomas (single nuclei) (IN DEVELOPMENT)
 
-This repository contains R scripts for analyzing single cell DNA methylation and RNA-seq data from IDH-mutant longitudinal gliomas
+This repository contains scripts for analyzing single cell DNA methylation and RNA-seq data from IDH-mutant longitudinal gliomas (manuscript in revision)
 
 
-Note: final data will be added once finalized (manuscript in revision)
+Note: final data will be added once manuscript is finalized
 
 ## Pre-processing of RNA and DNA methylation data
 
