@@ -26,10 +26,10 @@ We performed differential gene expression analysis between G-CIMP high and low t
 ## DNA methylation analysis
 
 ### CNV analysis
-We detected large scale CNV events based on the log2 fold-change differences in 2MB bins in malignant cells compared to non-malignant cells
+We detected large scale CNV events based on the log2 fold-change differences in 2MB bins in malignant cells compared to non-malignant cells (method adapted from scATAC-seq CNV calling from Satpathy et al, Nature Biotechnology 2019)
 
 ### G-CIMP score
-We calculated the mean G-CIMP score for each cell based on the mean DNA methylation across 1kb regions around G-CIMP probes.
+We calculated the G-CIMP score for each cell based on the mean DNA methylation values across 1kb regions around G-CIMP probes.
 
 ### PATH anaysis 
 We used [PATH](https://github.com/landau-lab/PATH) (Schiffman et al, Nature Genetics, 2023) to infer G-CIMP and cell state heritability based on phylogenetic tress from DNA methylation data
