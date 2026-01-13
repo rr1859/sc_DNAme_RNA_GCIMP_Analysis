@@ -20,14 +20,11 @@ load("path_analysis.RData")
 #'   used as a reference.
 #' @param features Character vector or data frame. Features to be analyzed or
 #'   mapped onto the tree (e.g., stem_final, gcimp_score).
-#' @param return_value Character or logical. Specifies what the function should
-#'   return (e.g., "value" : z-score values, "plot" : auto-correlation plot, 
-#' "auto_values": all values).
-#'
-#' @return Depends on `return_value`. May return a data frame, list, or
-#'   visualization object.
+#' @return List: $auto_cor_plot (auto correlation plot) and 
+#'   $path_values_df (path output values (Moran's I and Z-score))
 
-path_analysis <- function(edited_tree_path, tree_path, features, return_value){
+
+path_analysis <- function(edited_tree_path, tree_path, features){
   tr <- read.newick(edited_tree_path)
   tr_unedit <- read.newick(tree_path)
   # remove normal cells
@@ -100,19 +97,14 @@ path_analysis <- function(edited_tree_path, tree_path, features, return_value){
     labs(fill="Phylogenetic\ncorrelation\nz score") +
     xlab("Cell state") + ylab("Cell state") +
     theme(aspect.ratio = 1) +ggtitle(sub(".*/([^/]+)_filter.phy.treefile", "\\1", tree_path))
-  if(return_value == "value"){
-    return(z_score_df)
-  } else if(return_value == "plot"){
-    return(auto_plot)
-  } else if(return_value == "auto_values"){
-    return(df)
-  }
+
+    return(list = c(auto_cor_plot = auto_plot, path_values_df = df))
+  
 }
 
 #run path_analysis function for each sample
 sample = "TKU3197"
 path_analysis (edited_tree_path = subset(annotation, sample == "TKU3197")$edited_tree_path,
                tree_path = subset(annotation, sample == "TKU3197")$tree_path,
-               features = c("stem_final", "gcimp"), 
-               return_value = c("auto_values"))
+               features = c("stem_final", "gcimp"))
 
