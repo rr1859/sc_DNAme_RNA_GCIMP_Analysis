@@ -7,7 +7,7 @@ Note: final data will be added once manuscript is finalized
 
 ## Pre-processing of RNA and DNA methylation data
 
-Pre-processing of data was performed as per Chaligne et al, Nature Genetics, 2019 ([github repo](https://github.com/danasilv/Single-cell-multi-omics-profiling-of-human-gliomas))
+Pre-processing of data was performed as per Chaligne et al, Nature Genetics, 2021 ([github repo](https://github.com/danasilv/Single-cell-multi-omics-profiling-of-human-gliomas))
 
 
 ## RNA analysis
