@@ -12,7 +12,7 @@ library(reshape2)
 library(ggpubr)
 
 
-load("annotation_hm_hclust_march2025.RData")
+load("path_analysis.RData")
 
 path_analysis <- function(edited_tree_path, tree_path, features, return_value){
   tr <- read.newick(edited_tree_path)
@@ -98,4 +98,10 @@ path_analysis <- function(edited_tree_path, tree_path, features, return_value){
   }
 }
 
+#run for each sample
+sample = "TKU3197"
+path_analysis ( edited_tree_path = subset(annotation, sample == "TKU3197")$edited_tree_path,
+               tree_path = subset(annotation, sample == "TKU3197")$tree_path,
+               features = c("stem_final", "gcimp"), 
+               return_value = c("auto_values"))
 
