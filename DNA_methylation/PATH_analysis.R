@@ -14,6 +14,19 @@ library(ggpubr)
 
 load("path_analysis.RData")
 
+#' @param edited_tree_path Character string. File path to the edited tree object
+#'   used for downstream analysis.
+#' @param tree_path Character string. File path to the original (unedited) tree
+#'   used as a reference.
+#' @param features Character vector or data frame. Features to be analyzed or
+#'   mapped onto the tree (e.g., stem_final, gcimp_score).
+#' @param return_value Character or logical. Specifies what the function should
+#'   return (e.g., "value" : z-score values, "plot" : auto-correlation plot, 
+#' "auto_values": all values).
+#'
+#' @return Depends on `return_value`. May return a data frame, list, or
+#'   visualization object.
+
 path_analysis <- function(edited_tree_path, tree_path, features, return_value){
   tr <- read.newick(edited_tree_path)
   tr_unedit <- read.newick(tree_path)
@@ -98,9 +111,9 @@ path_analysis <- function(edited_tree_path, tree_path, features, return_value){
   }
 }
 
-#run for each sample
+#run path_analysis function for each sample
 sample = "TKU3197"
-path_analysis ( edited_tree_path = subset(annotation, sample == "TKU3197")$edited_tree_path,
+path_analysis (edited_tree_path = subset(annotation, sample == "TKU3197")$edited_tree_path,
                tree_path = subset(annotation, sample == "TKU3197")$tree_path,
                features = c("stem_final", "gcimp"), 
                return_value = c("auto_values"))
